@@ -1,0 +1,6 @@
+#!/bin/sh
+set -euo pipefail
+
+docker run -v $(PWD):/volume -t -v ts-cargo-cache:/root/.cargo clux/muslrust cargo build --release
+
+docker build -t rust-leak-example --no-cache -f Dockerfile .
