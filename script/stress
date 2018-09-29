@@ -1,8 +1,0 @@
-#!/bin/sh
-set -euo pipefail
-
-for i in {1..20}; do
-  echo "================= Iteration ${i}"
-  curl -X POST -H "Content-Type: application/json" -d @script/lots_of_data.txt -s -S http://localhost:7000/api/take_data > /dev/null
-  docker stats --no-stream ${container_id}
-done;
