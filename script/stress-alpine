@@ -1,11 +1,13 @@
 #!/bin/sh
 set -euo pipefail
 
+script/build-alpine
+
 container_id="$(docker run --rm -d -p 7000:7000 rust-leak-example)"
 sleep 2
 echo "To manually stop the container: docker stop ${container_id}"
 
-for i in {1..20}; do
+for i in {1..50}; do
   echo "================= Iteration ${i}"
   curl -X POST -H "Content-Type: application/json" -d @script/lots_of_data.txt -s -S http://localhost:7000/api/take_data > /dev/null
   docker stats --no-stream ${container_id}

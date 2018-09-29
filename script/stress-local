@@ -1,0 +1,15 @@
+#!/bin/sh
+set -euo pipefail
+
+cargo build --release
+target/release/api &
+
+pid="$(pgrep -x api)"
+
+for i in {1..50}; do
+  echo "================= Iteration ${i}"
+  curl -X POST -H "Content-Type: application/json" -d @script/lots_of_data.txt -s -S http://localhost:7000/api/take_data > /dev/null
+  echo "Memory (KB): $(ps -o rss= -p ${pid})"
+done;
+
+kill ${pid}
