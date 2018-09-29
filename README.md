@@ -1,15 +1,15 @@
 ## Potential memory leak repro
 
-I was running a small project on hyper.rs and noticed my containers died.
-This was happening beceause the memory kept growing with use.
+I was running a small project on hyper.sh and noticed my containers died.
+This was happening because the memory kept growing with use.
 
 So my observations:
 
-- memory grows on hyper.rs
+- memory grows on hyper.sh
 - memory grows when compiled for alpine Docker image
 - memory does not seem to grow when compiled on MacOS
 
-## Benhmarks
+## Benchmarks
 
 - run alpine - `script/stress-alpine`
 - run locally - `script/stress-local`
