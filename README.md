@@ -7,7 +7,7 @@ So my observations:
 
 - memory grows on hyper.sh
 - memory grows when compiled for alpine Docker image
-- memory does not seem to grow when compiled on MacOS
+- memory grows (but definitely not as much) when compiled for MacOS
 
 ## Benchmarks
 
